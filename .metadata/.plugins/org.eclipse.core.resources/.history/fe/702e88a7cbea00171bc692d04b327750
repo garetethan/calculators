@@ -1,0 +1,203 @@
+'''
+Created on Dec 24, 2017
+
+@author: Garet
+'''
+
+
+# A while ago I tried to build a calculator in Java that took a String
+# expression and evaluated it. I wanted it to correctly handle parentheses and
+# order of operations. This was hard enough that I never really got it working.
+# I decided that Python was probably an easier language to use to create little
+# apps that I did not expect anyone but myself to use. So I started creating
+# the same thing in Python using more or less the same strategy. Then I found
+# out that Python, as usual, has a method that essentially does this all for
+# you. It's called eval() and it's available everywhere.
+
+from math import *
+from graphics import *
+
+buttonLabels = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '000', '+', '-', '*', '/', 'x^2', 'x^3', 'x^y']
+
+def main():
+    
+    winWidth = 500
+    winHeight = 300
+    win = GraphWin('Calculator', winWidth, winHeight)
+    win.setBackground('white')
+    
+    # Draw text input box
+    userInputTextSize = 15
+    userInputWidth = 30
+    userInput = Entry(Point(winWidth // 2, userInputTextSize), userInputWidth)
+    userInput.setSize(userInputTextSize)
+    userInput.setTextColor('black')
+    userInput.setFace('courier')
+    userInput.draw(win)
+    
+    resultDisplay = Text(Point(winWidth // 2, userInputTextSize * 2), 'Result will appear here.')
+    resultDisplay.draw(win)
+    
+    buttonWidth = 50
+    buttonHeight = 25
+    topMarginHeight = 100
+    
+    rows = winHeight // (buttonHeight)
+    columns = winWidth // (buttonWidth)
+    
+    i = 0
+    while i < rows * columns and i < len(buttonLabels):
+        # Row index is i // rows, column index is i % columns
+        topLeftX = (i // rows) * (buttonWidth)
+        topLeftY = topMarginHeight + (i % columns) * (buttonHeight)
+        newButton = rectMod(topLeftX, topLeftY, 50, 50)
+        newButton.setFill('grey')
+        newButton.draw(win)
+        newLabel = Text(Point(topLeftX + (buttonWidth / 2),
+                              topLeftY + (buttonHeight / 2)), buttonLabels[i])
+        newLabel.setFace('courier')
+        # Wish I could spell colour with a u...
+        newLabel.setTextColor('white')
+        newLabel.draw(win)
+        
+        i += 1
+    
+    # "Listen" for Enter and button clicks.
+    while True:
+        # "Listen" for button click.
+        clickPoint = win.getMouse()
+        if clickPoint.getY() > topMarginHeight:
+            clickRow = clickPoint.getX() // buttonWidth
+            clickColumn = clickPoint.getY() // buttonHeight
+            print('DEBUG index = {}'.format(clickRow * (winWidth // buttonWidth) + clickColumn))
+            newInput = userInput.getText() + buttonLabels[int(clickRow * (winWidth // buttonWidth) + clickColumn)]
+            userInput.setText(newInput)
+        
+        # "Listen" for Enter key.
+        if win.getKey() == 'Return':
+            # Calculate and display result.
+            try:
+                result = calc(userInput.getText())
+                resultDisplay.setText(result)
+            except ZeroDivisionError:
+                result = 'Undefined! (Attempted division by zero.)'
+            except NameError:
+                resultDisplay.setText('That expression does not look right.')
+
+# Takes the expression and gives the result at the command-line instead of graphically.
+def textDriver():
+    
+    expression = raw_input('Enter a mathematical expression to evaluate below.\n')
+    print('The result is: {}'.format(calc(expression)))
+
+# Takes a string expression and returns the result as a float.
+def calc(expression):
+    
+    # Adding a space to the end makes filtering through and changing things easier.
+    expression += ' '
+    
+    
+    i = 0
+    absCount = 0
+    while i < len(expression):
+        
+        # Add '.0' to the end of all integers so that all calculations are floating point, not integer.
+        if expression[i].isdigit():
+            i += 1
+            while expression[i].isdigit():
+                i += 1
+            if expression[i] != '.':
+                expression = expression[:i] + '.0' + expression[i:]
+                i += 1
+        
+        # Replace absolute-value bars with the abs() function that eval() will recognize.
+        if expression[i] == '|':
+            if absCount % 2 == 0:
+                expression = expression[:i - 1] + 'abs(' + expression[i:]
+            else:
+                expression = expression[:i - 1] + ')' + expression[i:]
+        i += 1
+    # ^ is XOR in Python.
+    expression = expression.replace('^', '**')
+    
+    # Python's log function has a default base of e.
+    expression = expression.replace('ln', 'log')
+    
+    
+    print('[DEBUG] About to evaluate {}'.format(expression))
+    
+    # Let Python evaluate the filtered mathematical expression and round to ten digits after the decimal.
+    return round(eval(expression), 10)
+
+# Define missing trig functions.
+def sec(num):
+    return 1 / cos(num)
+
+def csc(num):
+    return 1 / sin(num)
+
+def cot(num):
+    return 1 / tan(num)
+
+def asec(num):
+    return acos(1 / num)
+
+def acsc(num):
+    return asin(1 / num)
+
+def acot(num):
+    return acot(1 / num)
+
+# Define trig functions that assume inputs are in degrees.
+def sind(num):
+    return sin(radians(num))
+
+def cosd(num):
+    return cos(radians(num))
+
+def tand(num):
+    return tan(radians(num))
+
+def secd(num):
+    return 1 / cos(radians(num))
+
+def cscd(num):
+    return 1 / sin(radians(num))
+
+def cotd(num):
+    return 1 / tan(radians(num))
+
+# Define arc (inverse) trig functions that convert outputs to degrees.
+def asind(num):
+    return degrees(asin(num))
+
+def acosd(num):
+    return degrees(acos(num))
+
+def atand(num):
+    return degrees(atan(num))
+
+def asecd(num):
+    return degrees(acos(1 / num))
+
+def acscd(num):
+    return degrees(asin(1 / num))
+
+def acotd(num):
+    return degrees(atan(1 / num))
+
+# Square and cube, because I want them.
+def sq(num):
+    return num ** 2
+
+def cb(num):
+    return num ** 3
+
+def cbrt(num):
+    return num ** (1 / 3)
+
+def rectMod(topLeftX, topLeftY, width, height):
+    return Rectangle(Point(topLeftX, topLeftY), Point(topLeftX + width, topLeftY + height))
+
+if __name__ == '__main__':
+    textDriver()

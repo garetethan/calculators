@@ -1,0 +1,147 @@
+'''
+Created on Dec 24, 2017
+
+@author: Garet
+'''
+
+
+# A while ago I tried to build a calculator in Java that took a String
+# expression and evaluated it. I wanted it to correctly handle parentheses and
+# order of operations. This was hard enough that I never really got it working.
+# I decided that Python was probably an easier language to use to create little
+# apps that I did not expect anyone but myself to use. So I started creating
+# the same thing in Python using more or less the same strategy. Then I found
+# out that Python, as usual, has a method that essentially does this all for
+# you. It's called eval() and it's available everywhere.
+
+# So Python has an eval function...
+from math import *
+from graphics import *
+import time
+
+buttonLabels = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '000', '+', '-', '*', '/']
+
+for i in range(100 - len(buttonLabels)):
+    buttonLabels.append('?')
+
+def main():
+    
+    winWidth = 500
+    winHeight = 500
+    win = GraphWin('Calculator', winWidth, winHeight)
+    win.setBackground('white')
+    
+    buttonWidth = 50
+    buttonHeight = 50
+    padding = 10
+    topMargin = 100
+    
+    # Draw text input box
+    userInput = Entry(Point(padding + 150, padding + 15), 30)
+    userInput.setTextColor('black')
+    userInput.setFace('courier')
+    userInput.draw(win)
+    
+    resultBox = Text(Point(padding + 150, padding + 45), 'Result will appear here.')
+    resultBox.draw(win)
+    
+    rows = winHeight // (buttonHeight + padding)
+    columns = winWidth // (buttonWidth + padding)
+    
+    for i in range(rows * columns):
+        # Row index is i // rows, column index is i % columns
+        topLeftX = padding + (i // rows) * (buttonWidth + padding)
+        topLeftY = topMargin + (i % columns) * (buttonHeight + padding)
+        newButton = rectMod(topLeftX, topLeftY, 50, 50)
+        newButton.setFill('grey')
+        newButton.draw(win)
+        newLabel = Text(Point(topLeftX + (buttonWidth / 2),
+                              topLeftY + (buttonHeight / 2)), buttonLabels[i])
+        newLabel.setFace('courier')
+        # Wish I could spell colour with a u...
+        newLabel.setTextColor('white')
+        newLabel.draw(win)
+    
+    
+    # TEMPORARY
+    while True:
+        if win.getKey() == 'Return':
+            # Calculate and display result.
+            try:
+                result = calc(userInput.getText())
+                resultBox.setText(result)
+            except ZeroDivisionError:
+                result = 'Undefined! (Attempted division by zero.)'
+            except NameError:
+                resultBox.setText('That expression does not look right.')
+    
+    # Old command-line driver.
+    # expression = input('Enter a mathematical expression to evaluate below. If you want to perform exponentiation, use base**exponent instead of base^exponent.\n')
+    # print(calc(expression))
+
+
+def calc(expression):
+    
+    # Adding a space to the end makes the int -> float conversion below much easier without changing calculation at all.
+    expression += ' '
+    
+    # Add '.0' to the end of all integers so that all calculations are floating point, not integer.
+    i = 0
+    while i < len(expression):
+        print('[DEBUG] Checking {}'.format(expression[i]))
+        if expression[i].isdigit():
+            print('DEBUG Adding .0')
+            i += 1
+            while expression[i].isdigit():
+                i += 1
+            if expression[i] != '.':
+                expression = expression[:i] + '.0' + expression[i:]
+                i += 1
+        i += 1
+    # ^ is XOR in Python.
+    expression = expression.replace('^', '**')
+    
+    # Python's log function has a default base of e.
+    expression = expression.replace('ln', 'log')
+    
+    if '|' in expression:
+        print('Error in calculator.calc(): Trying to take an absolute value? Use abs(x) instead.')
+        return float('nan')
+    
+    print('[DEBUG] About to evaluate {}'.format(expression))
+    
+    # Let Python evaluate the filtered mathematical expression and round to ten digits after the decimal.
+    return round(eval(expression), 10)
+
+# Provide trig functions that assume inputs are in degrees.
+def sind(num):
+    return sin(radians(num))
+
+def cosd(num):
+    return cos(radians(num))
+
+def tand(num):
+    return tan(radians(num))
+
+# Provide arc trig functions that convert outputs to degrees.
+def asind(num):
+    return degrees(asin(num))
+
+def acosd(num):
+    return degrees(acos(num))
+
+def atand(num):
+    return degrees(atan(num))
+
+# Square and cube, because I want to use them often.
+def sq(num):
+    return num ** 2
+
+def cb(num):
+    return num ** 3
+
+def rectMod(topLeftX, topLeftY, width, height):
+    return Rectangle(Point(topLeftX, topLeftY), Point(topLeftX + width, topLeftY + height))
+
+if __name__ == '__main__':
+    main()
