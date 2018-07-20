@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_K1UL0HHFEeila_OtfIz4Yw" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_K1UL0XHFEeila_OtfIz4Yw" bindingContexts="_K1WB3XHFEeila_OtfIz4Yw">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;graphics.py&quot; tooltip=&quot;PCalculator/calculators/graphics.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/graphics.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;fractionsPlus.py&quot; tooltip=&quot;PCalculator/calculators/fractionsPlus.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/fractionsPlus.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;fractions.py&quot; tooltip=&quot;C:\Program Files\Python36\Lib\fractions.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Program%20Files/Python36/Lib/fractions.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;&quot; tooltip=&quot;C:\&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;mixedNumbers.py&quot; tooltip=&quot;PCalculator/calculators/mixedNumbers.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/mixedNumbers.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;equationSolver.py&quot; tooltip=&quot;PCalculator/calculators/equationSolver.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/equationSolver.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;__init__.py&quot; tooltip=&quot;PCalculator/calculators/__init__.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/__init__.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;PCalculator&quot; tooltip=&quot;C:\Users\Garet\Programming\calculators\PCalculator&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Garet/Programming/calculators/PCalculator&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;calculator.py&quot; tooltip=&quot;PCalculator/calculator.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculator.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;sandbox.py&quot; tooltip=&quot;PCalculator/sandbox.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/sandbox.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.DefaultTextEditor&quot; name=&quot;primes.txt&quot; tooltip=&quot;PCalculator/primes.txt&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/primes.txt&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;factorizer.py&quot; tooltip=&quot;PCalculator/factorizer.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/factorizer.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;primesCreator.py&quot; tooltip=&quot;PCalculator/primesCreator.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/primesCreator.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;primesFormatter.py&quot; tooltip=&quot;PCalculator/primesFormatter.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/primesFormatter.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.DefaultTextEditor&quot; name=&quot;primes&quot; tooltip=&quot;PCalculator/primes&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/primes&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;sandbox.py&quot; tooltip=&quot;PCalculator/sandbox.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/sandbox.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;graphics.py&quot; tooltip=&quot;PCalculator/calculators/graphics.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/graphics.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;fractionsPlus.py&quot; tooltip=&quot;PCalculator/calculators/fractionsPlus.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/fractionsPlus.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;fractions.py&quot; tooltip=&quot;C:\Program Files\Python36\Lib\fractions.py&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Program%20Files/Python36/Lib/fractions.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;&quot; tooltip=&quot;C:\&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;mixedNumbers.py&quot; tooltip=&quot;PCalculator/calculators/mixedNumbers.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/mixedNumbers.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;equationSolver.py&quot; tooltip=&quot;PCalculator/calculators/equationSolver.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/equationSolver.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;__init__.py&quot; tooltip=&quot;PCalculator/calculators/__init__.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculators/__init__.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;PCalculator&quot; tooltip=&quot;C:\Users\Garet\Programming\calculators\PCalculator&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Garet/Programming/calculators/PCalculator&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;calculator.py&quot; tooltip=&quot;PCalculator/calculator.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/calculator.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.DefaultTextEditor&quot; name=&quot;primes.txt&quot; tooltip=&quot;PCalculator/primes.txt&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/primes.txt&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;factorizer.py&quot; tooltip=&quot;PCalculator/factorizer.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/factorizer.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;primesCreator.py&quot; tooltip=&quot;PCalculator/primesCreator.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/primesCreator.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;primesFormatter.py&quot; tooltip=&quot;PCalculator/primesFormatter.py&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/primesFormatter.py&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.DefaultTextEditor&quot; name=&quot;primes&quot; tooltip=&quot;PCalculator/primes&quot;>&#xD;&#xA;&lt;persistable path=&quot;/PCalculator/primes&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_K1UL0XHFEeila_OtfIz4Yw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_K1UL0nHFEeila_OtfIz4Yw" x="0" y="0" width="1024" height="768">
@@ -53,7 +53,7 @@
             <children xsi:type="basic:PartStack" xmi:id="_K1UL1nHFEeila_OtfIz4Yw" elementId="topLeft" containerData="2600" selectedElement="_K1UL13HFEeila_OtfIz4Yw">
               <children xsi:type="advanced:Placeholder" xmi:id="_K1UL13HFEeila_OtfIz4Yw" elementId="org.python.pydev.navigator.view" ref="_K1UzwHHFEeila_OtfIz4Yw"/>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_K1UL2HHFEeila_OtfIz4Yw" containerData="7400" selectedElement="_K1UL2XHFEeila_OtfIz4Yw">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_K1UL2HHFEeila_OtfIz4Yw" containerData="7400" selectedElement="_K1UL3XHFEeila_OtfIz4Yw">
               <children xsi:type="basic:PartSashContainer" xmi:id="_K1UL2XHFEeila_OtfIz4Yw" containerData="6715" selectedElement="_K1UL2nHFEeila_OtfIz4Yw" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_K1UL2nHFEeila_OtfIz4Yw" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_K1UzmnHFEeila_OtfIz4Yw"/>
                 <children xsi:type="basic:PartStack" xmi:id="_K1UL23HFEeila_OtfIz4Yw" elementId="org.eclipse.ui.views.ContentOutlineMStack" containerData="2500" selectedElement="_K1UL3HHFEeila_OtfIz4Yw">
@@ -100,17 +100,15 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_K1UzmnHFEeila_OtfIz4Yw" elementId="org.eclipse.ui.editorss" selectedElement="_K1Uzm3HFEeila_OtfIz4Yw">
-      <children xsi:type="basic:PartStack" xmi:id="_K1Uzm3HFEeila_OtfIz4Yw" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_K1UznHHFEeila_OtfIz4Yw">
+      <children xsi:type="basic:PartStack" xmi:id="_K1Uzm3HFEeila_OtfIz4Yw" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_oIKh4IuPEeiIKNH9IiOoYg">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
         <tags>active</tags>
-        <tags>noFocus</tags>
         <children xsi:type="basic:Part" xmi:id="_K1UznHHFEeila_OtfIz4Yw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="calculator" iconURI="platform:/plugin/org.python.pydev.shared_ui/icons/python_file.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;calculator.py&quot; partName=&quot;calculator&quot; title=&quot;calculator&quot; tooltip=&quot;PCalculator/calculators/calculator.py&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/PCalculator/calculators/calculator.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;11498&quot; selectionTopPixel=&quot;4435&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;calculator.py&quot; partName=&quot;calculator&quot; title=&quot;calculator&quot; tooltip=&quot;PCalculator/calculators/calculator.py&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/PCalculator/calculators/calculator.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;719&quot; selectionOffset=&quot;11267&quot; selectionTopPixel=&quot;4450&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.python.pydev.editor.PythonEditor</tags>
           <tags>removeOnHide</tags>
-          <tags>active</tags>
           <menus xsi:type="menu:PopupMenu" xmi:id="_K1UznXHFEeila_OtfIz4Yw" elementId="#PyEditContext">
             <tags>menuContribution:popup</tags>
             <tags>popup:#PyEditContext</tags>
@@ -166,12 +164,20 @@
             <tags>popup:#OverviewRulerContext</tags>
           </menus>
         </children>
+        <children xsi:type="basic:Part" xmi:id="_oIKh4IuPEeiIKNH9IiOoYg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="sandbox" iconURI="platform:/plugin/org.python.pydev.shared_ui/icons/python_file.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.python.pydev.editor.PythonEditor&quot; name=&quot;sandbox.py&quot; partName=&quot;sandbox&quot; title=&quot;sandbox&quot; tooltip=&quot;PCalculator/sandbox.py&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/PCalculator/sandbox.py&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;113&quot; selectionTopPixel=&quot;70&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.python.pydev.editor.PythonEditor</tags>
+          <tags>removeOnHide</tags>
+          <tags>active</tags>
+          <tags>activeOnClose</tags>
+        </children>
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_K1UzwHHFEeila_OtfIz4Yw" elementId="org.python.pydev.navigator.view" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="PyDev Package Explorer" iconURI="platform:/plugin/org.python.pydev/icons/pydev_package_explorer.gif" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.python.pydev.navigator.ui.PydevPackageExplorer"/>
       <persistedState key="originalCompatibilityViewBundle" value="org.python.pydev"/>
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; currentWorkingSetName=&quot;Aggregate for window 1520048399392&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;>&#xD;&#xA;&lt;expanded IMemento.internal.id=&quot;C:/Users/Garet/Programming/calculators/PCalculator&quot;/>&#xD;&#xA;&lt;expanded IMemento.internal.id=&quot;C:/Users/Garet/Programming/calculators/PCalculator/calculators&quot;/>&#xD;&#xA;&lt;selected IMemento.internal.id=&quot;C:/Users/Garet/Programming/calculators/PCalculator/calculators/graphics.py&quot;/>&#xD;&#xA;&lt;lastRecentlyUsedFilters/>&#xD;&#xA;&lt;/view>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; currentWorkingSetName=&quot;Aggregate for window 1520048399392&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;>&#xD;&#xA;&lt;expanded IMemento.internal.id=&quot;C:/Users/Garet/Programming/calculators/PCalculator&quot;/>&#xD;&#xA;&lt;expanded IMemento.internal.id=&quot;C:/Users/Garet/Programming/calculators/PCalculator/calculators&quot;/>&#xD;&#xA;&lt;selected IMemento.internal.id=&quot;C:/Users/Garet/Programming/calculators/PCalculator/sandbox.py&quot;/>&#xD;&#xA;&lt;lastRecentlyUsedFilters/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:PyDev</tags>
       <menus xmi:id="_K1UzwXHFEeila_OtfIz4Yw" elementId="org.python.pydev.navigator.view">
@@ -253,40 +259,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaC3HFEeila_OtfIz4Yw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaDHHFEeila_OtfIz4Yw" elementId="new.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaDXHFEeila_OtfIz4Yw" elementId="newWizardDropDown">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaDnHFEeila_OtfIz4Yw" elementId="new.ext" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaD3HFEeila_OtfIz4Yw" elementId="save.group" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaEHHFEeila_OtfIz4Yw" elementId="save">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaEXHFEeila_OtfIz4Yw" elementId="saveAll">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaEnHFEeila_OtfIz4Yw" elementId="save.ext" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_K1VaE3HFEeila_OtfIz4Yw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_K1Zrh3HFEeila_OtfIz4Yw"/>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaFHHFEeila_OtfIz4Yw" elementId="print.ext" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaFXHFEeila_OtfIz4Yw" elementId="build.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaFnHFEeila_OtfIz4Yw" elementId="build.ext" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaF3HFEeila_OtfIz4Yw" elementId="additions">
-          <tags>Opaque</tags>
-        </children>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Vg-XkIt_EeiIKNH9IiOoYg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_K1Zrh3HFEeila_OtfIz4Yw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaGHHFEeila_OtfIz4Yw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -297,39 +270,12 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaRXHFEeila_OtfIz4Yw" elementId="com.python.pydev.navigate.actionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaRnHFEeila_OtfIz4Yw" elementId="pyNavigateGroup">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaR3HFEeila_OtfIz4Yw" elementId="com.python.pydev.analysis.actions.pyGlobalsBrowserWorkbench">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaSHHFEeila_OtfIz4Yw" elementId="org.eclipse.debug.ui.launchActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaSXHFEeila_OtfIz4Yw" elementId="debug">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaSnHFEeila_OtfIz4Yw" elementId="org.eclipse.debug.internal.ui.actions.DebugDropDownAction">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaS3HFEeila_OtfIz4Yw" elementId="org.eclipse.debug.internal.ui.actions.RunDropDownAction">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaTHHFEeila_OtfIz4Yw" elementId="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaTXHFEeila_OtfIz4Yw" elementId="org.eclipse.search.searchActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaTnHFEeila_OtfIz4Yw" elementId="Search">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaT3HFEeila_OtfIz4Yw" elementId="org.eclipse.mylyn.tasks.ui.openTask">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaUHHFEeila_OtfIz4Yw" elementId="org.eclipse.search.OpenSearchDialogPage">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaUXHFEeila_OtfIz4Yw" elementId="group.nav" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -337,34 +283,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaU3HFEeila_OtfIz4Yw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaVHHFEeila_OtfIz4Yw" elementId="history.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaVXHFEeila_OtfIz4Yw" elementId="group.application" visible="false">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaVnHFEeila_OtfIz4Yw" elementId="backardHistory">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaV3HFEeila_OtfIz4Yw" elementId="forwardHistory">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaWHHFEeila_OtfIz4Yw" elementId="pin.group">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_K1VaWXHFEeila_OtfIz4Yw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_K1ZFlHHFEeila_OtfIz4Yw"/>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaWnHFEeila_OtfIz4Yw" elementId="org.eclipse.ui.edit.text.gotoNextAnnotation">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaW3HFEeila_OtfIz4Yw" elementId="org.eclipse.ui.edit.text.gotoPreviousAnnotation">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaXHHFEeila_OtfIz4Yw" elementId="org.eclipse.ui.edit.text.gotoLastEditPosition">
-          <tags>Opaque</tags>
-        </children>
-      </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_K1VaXXHFEeila_OtfIz4Yw" elementId="org.python.pydev.editor.PythonEditor" visible="false">
-        <tags>Draggable</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_VhLL4It_EeiIKNH9IiOoYg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_K1ZFlHHFEeila_OtfIz4Yw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaXnHFEeila_OtfIz4Yw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -376,12 +295,6 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_K1VaYnHFEeila_OtfIz4Yw" elementId="org.eclipse.ui.workbench.help" visible="false">
         <tags>Draggable</tags>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaY3HFEeila_OtfIz4Yw" elementId="group.help">
-          <tags>Opaque</tags>
-        </children>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_K1VaZHHFEeila_OtfIz4Yw" elementId="group.application" visible="false">
-          <tags>Opaque</tags>
-        </children>
       </children>
       <children xsi:type="menu:ToolControl" xmi:id="_K1VaZXHFEeila_OtfIz4Yw" elementId="PerspectiveSpacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
         <tags>stretch</tags>
@@ -1348,6 +1261,23 @@
     <tags>View</tags>
     <tags>categoryTag:XML</tags>
   </descriptors>
+  <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
+    <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+      <tags>glue</tags>
+      <tags>move_after:PerspectiveSpacer</tags>
+      <tags>SHOW_RESTORE_MENU</tags>
+    </children>
+    <children xsi:type="menu:ToolControl" xmi:id="_8tJPcF9tEeO-yojH_y4TJA" elementId="SearchField" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.quickaccess.SearchField">
+      <tags>move_after:Spacer Glue</tags>
+      <tags>HIDEABLE</tags>
+      <tags>SHOW_RESTORE_MENU</tags>
+    </children>
+    <children xsi:type="menu:ToolControl" xmi:id="_9LgmcF9tEeO-yojH_y4TJA" elementId="Search-PS Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+      <tags>glue</tags>
+      <tags>move_after:SearchField</tags>
+      <tags>SHOW_RESTORE_MENU</tags>
+    </children>
+  </trimContributions>
   <commands xmi:id="_K1ZEgXHFEeila_OtfIz4Yw" elementId="AnyEdit.sortNumericallyAscending.command" commandName="Numerically 0-9" category="_K1a5uXHFEeila_OtfIz4Yw"/>
   <commands xmi:id="_K1ZEgnHFEeila_OtfIz4Yw" elementId="org.eclipse.ui.edit.text.select.pageUp" commandName="Select Page Up" description="Select to the top of the page" category="_K1a5t3HFEeila_OtfIz4Yw"/>
   <commands xmi:id="_K1ZEg3HFEeila_OtfIz4Yw" elementId="org.eclipse.ui.edit.text.toggleWordWrap" commandName="Toggle Word Wrap" description="Toggle word wrap in the current text editor" category="_K1a5tXHFEeila_OtfIz4Yw"/>

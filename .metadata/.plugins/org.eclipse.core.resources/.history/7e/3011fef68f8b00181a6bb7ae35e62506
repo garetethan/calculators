@@ -1,0 +1,25 @@
+'''
+Created on Mar 8, 2018
+
+@author: Garet
+'''
+import re
+
+def main():
+    print(f'{int_to_base(1234, 12)}')
+    
+def int_to_base(number, new_base):
+
+    # Uses "the division method"
+    sign = -1 if number < 0 else 1
+    number *= sign
+    ans = ''
+    while number:
+        ans += symbols[number % new_base]
+        number //= new_base
+    if sign == -1:
+        ans += '-'
+    return ans[::-1]
+
+if __name__ == '__main__':
+    main()

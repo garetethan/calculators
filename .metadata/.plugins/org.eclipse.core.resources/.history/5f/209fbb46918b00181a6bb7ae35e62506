@@ -1,0 +1,28 @@
+'''
+Created on Mar 8, 2018
+
+@author: Garet
+'''
+import string
+
+def main():
+    num = int_to_base(1234, 12)
+    print(f'{num}')
+    
+def int_to_base(number, new_base):
+    # Define list of symbols used as digits
+    symbols = string.digits + string.ascii_uppercase
+    
+    # Uses "the division method"
+    isNeg = number < 0
+    number = abs(number)
+    ans = ''
+    while number:
+        ans += symbols[number % new_base]
+        number //= new_base
+    if sign == -1:
+        ans += '-'
+    return ans[::-1]
+
+if __name__ == '__main__':
+    main()

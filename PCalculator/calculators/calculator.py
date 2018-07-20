@@ -6,18 +6,12 @@ Created on Dec 24, 2017
 
 
 # STILL UNDER CONSTRUCTION.
-# A while ago I tried to build a calculator in Java that took a String
-# expression and evaluated it. I wanted it to correctly handle parentheses and
-# order of operations. This was hard enough that I never really got it working.
-# I decided that Python was probably an easier language to use to create little
-# apps that I did not expect anyone but myself to use. So I started creating
-# the same thing in Python using more or less the same strategy. Then I found
-# out that Python, as usual, has a method that essentially does this all for
-# you. It's called eval() and it's available everywhere.
+# I want to make a Python calculator around the eval() function.
 # But I don't want it to just be a command-line thing. I want to replace the
 # Windows calculator. So I found a third party graphics module (apparently
 # there is no built in one) that seems quite common and have started to build
 # the app.
+# All numbers should be handled as Decimals. This prevents nasty floating point imprecision.
 # TODO:
 # Let numbers be entered as days, hours, minutes, etc. Convert everything to
 # seconds, perform calculations, then express in largest units and also smaller
@@ -25,8 +19,6 @@ Created on Dec 24, 2017
 # Make a factorize or unmultiply function.
 # Make LCD and GCD functions.
 # Add tau as a constant (if math doesn't already define it).
-# Add a changeBase() function that lets one change the base of a number to
-# enter / get numbers e.g. in base 12.
 # Let the text driver accept variable assignments, e.g.
 # ==> x = 6
 # ==> x + 7
@@ -43,75 +35,81 @@ Created on Dec 24, 2017
 # keys on my keyboard to different things so that I do not have to use all of
 # keys around the edge to type in a mathematical expression. (I don't know if
 # there would be a good way to do this, though.)
-# Create a generic log function that takes a base variable.
+# Make it possible to change the decimal precision setting (getcontext().prec) while the program is running.
 
 from math import *
+from decimal import *
 from graphics import *
 from re import split
+import string
 
+DECIMAL_ONE = Decimal(1)
 
 def main():
+    # Set the precision of all Decimals that we create.
+    getcontext().prec = 24
+    getcontext().rounding = ROUND_HALF_UP
     textDriver()
     
 def graphicalDriver():
     
     # Settings (constants).
-    buttonLabels = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '000', '+', '-', '*', '/', 'x^2', 'x^3', 'x^y']
-    buttonWidth = 50
-    buttonHeight = 25
-    topMarginHeight = 100
-    winWidth = 500
-    winHalfWidth = round(winWidth / 2)
-    winHeight = 300
-    textSize = 15
-    textFont = 'courier'
-    textColour = 'black'
-    userInputWidth = 30
-    resultDisplayWidth = 30
+    BUTTON_LABELS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '000', '+', '-', '*', '/', 'x^2', 'x^3', 'x^y']
+    BUTTON_WIDTH = 50
+    BUTTON_HEIGHT = 25
+    TOP_MARGIN_HEIGHT = 100
+    WIN_WIDTH = 500
+    HALF_WIN_WIDTH = round(WIN_WIDTH / 2)
+    WIN_HEIGHT = 300
+    TEXT_SIZE = 15
+    TEXT_FONT = 'courier'
+    TEXT_COLOUR = 'black'
+    USER_INPUT_WIDTH = 30
+    RESULT_DISPLAY_WIDTH = 30
     
     # Create window.
-    win = GraphWin('Calculator', winWidth, winHeight)
+    win = GraphWin('Calculator', WIN_WIDTH, WIN_HEIGHT)
     win.setBackground('white')
     
     # Draw text input box
-    userInput = Entry(Point(winHalfWidth, textSize), userInputWidth)
-    userInput.setSize(textSize)
-    userInput.setFace(textFont)
-    userInput.setTextColor(textColour)
+    userInput = Entry(Point(HALF_WIN_WIDTH, TEXT_SIZE), USER_INPUT_WIDTH)
+    userInput.setSize(TEXT_SIZE)
+    userInput.setFace(TEXT_FONT)
+    userInput.setTextColor(TEXT_COLOUR)
     userInput.draw(win)
     
     # Draw box to display results of calculations.
-    resultDisplay = Text(Point(round(winWidth / 2), textSize * 2), 'Result will appear here.')
-    resultDisplay.setSize(textSize)
-    resultDisplay.setFace(textFont)
-    resultDisplay.setTextColor(textColour)
+    resultDisplay = Text(Point(round(WIN_WIDTH / 2), TEXT_SIZE * 2), 'Result will appear here.')
+    resultDisplay.setSize(TEXT_SIZE)
+    resultDisplay.setFace(TEXT_FONT)
+    resultDisplay.setTextColor(TEXT_COLOUR)
     resultDisplay.draw(win)
     
-    rows = len(buttonLabels) // buttonHeight + 1
-    columns = min(winWidth // buttonWidth, len(buttonLabels))
+    rows = len(BUTTON_LABELS) // BUTTON_HEIGHT + 1
+    columns = min(WIN_WIDTH // BUTTON_WIDTH, len(BUTTON_LABELS))
     
     buttonIndex = 0
-    while (buttonIndex < rows * columns) and (buttonIndex < len(buttonLabels)):
+    while (buttonIndex < rows * columns) and (buttonIndex < len(BUTTON_LABELS)):
         # Row index is buttonIndex // rows, column index is buttonIndex % columns
-        topLeftX = (buttonIndex // rows) * buttonWidth
-        topLeftY = topMarginHeight + ((buttonIndex % columns) * buttonHeight)
-        drawButton = drawButton(win, topLeftX, topLeftY, buttonWidth, buttonHeight, buttonLabels[buttonIndex])
+        topLeftX = (buttonIndex // rows) * BUTTON_WIDTH
+        topLeftY = TOP_MARGIN_HEIGHT + ((buttonIndex % columns) * BUTTON_HEIGHT)
+        drawButton = drawButton(win, topLeftX, topLeftY, BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_LABELS[buttonIndex])
         buttonIndex += 1
     
     # Create an exit button.
-    drawButton(winWidth - 60, 10, buttonWidth, buttonHeight, 'Exit')
+    drawButton(WIN_WIDTH - 60, 10, BUTTON_WIDTH, BUTTON_HEIGHT, 'Exit')
     
     # "Listen" for Enter and button clicks.
     while True:
         # "Listen" for button click.
         clickPoint = win.getMouse()
-        if clickPoint.getY() > topMarginHeight:
-            clickRow = clickPoint.getY() // buttonHeight
-            clickColumn = clickPoint.getX() // buttonWidth
-            buttonIndex = int(clickRow * (winWidth // buttonWidth) + clickColumn)
+        if clickPoint.getY() > TOP_MARGIN_HEIGHT:
+            clickRow = clickPoint.getY() // BUTTON_HEIGHT
+            clickColumn = clickPoint.getX() // BUTTON_WIDTH
+            buttonIndex = int(clickRow * (WIN_WIDTH // BUTTON_WIDTH) + clickColumn)
             print('DEBUG index = {}'.format(buttonIndex))
-            if buttonIndex < len(buttonLabels):
-                newInput = userInput.getText() + buttonLabels[buttonIndex]
+            if buttonIndex < len(BUTTON_LABELS):
+                newInput = userInput.getText() + BUTTON_LABELS[buttonIndex]
                 userInput.setText(newInput)
         
         # "Listen" for Enter key.
@@ -152,37 +150,37 @@ def textDriver():
     
     expression = input('==> ')
     while expression.lower() != 'quit':
-        # If it is a variable assignment, blindly pass to exec().
+        # If it is a variable assignment, save the value
         if '=' in expression:
             # Should just contain the name of the variable and its value.
             varName, varValue = expression.split('=')
             variables[varName.strip()] = calc(varValue)
         # Else it should be a mathematical expression to be evaluated.
         else:
-#             # Look for word follows by anything other than '(' (including the end of the string).
-#             variableTokens = split(r'([a-zA-z]+[^(]|[a-zA-z]+$)', expression)
-#             
-#             variableTokensLen = len(variableTokens)
-#             if variableTokensLen % 2 == 0:
-#                 print('Error: Even number of variable tokens in textDriver().')
-#                 
-#             filteredExpression = ''
-#             for i in range(int(variableTokensLen / 2)):
-#                 # The inserted string literal below should remain consistent with the name of the dictionary of user-defined variables.
-#                 filteredExpression += variableTokens[i * 2] + str(variables[variableTokens[(i * 2) + 1].strip()]) + ' '
-#             
-#             # In case the for loop above didn't run
-#             if filteredExpression == '':
-#                 filteredExpression = expression
-#                 
-#             print(f'Sending {filteredExpression} to calc.')
+            # Look for word follows by anything other than '(' (including the end of the string).
+            variableTokens = split(r'([a-zA-z]+[^(]|[a-zA-z]+$)', expression)
+             
+            variableTokensLen = len(variableTokens)
+            if variableTokensLen % 2 == 0:
+                print('Error: Even number of variable tokens in textDriver().')
+                 
+            filteredExpression = ''
+            for i in range(int(variableTokensLen / 2)):
+                # The inserted string literal below should remain consistent with the name of the dictionary of user-defined variables.
+                filteredExpression += variableTokens[i * 2] + str(variables[variableTokens[(i * 2) + 1].strip()]) + ' '
+             
+            # In case the for loop above didn't run
+            if filteredExpression == '':
+                filteredExpression = expression
+                 
+            print(f'Sending {filteredExpression} to calc.')
             variables['ans'] = calc(expression)
             print(variables['ans'])
         
         # Get input for next run.
         expression = input('==> ')
 
-# Takes a string expression and returns the result as a float.
+# Takes a string expression and returns the result as a decimal.
 # Does not catch exceptions.
 def calc(expression):
     
@@ -205,6 +203,7 @@ def calc(expression):
         if expression[i] == ')' and expression[i + 1] == '(':
             expression = expression[:i] + '*' + expression[i:]
         i += 1
+    
     # ^ is XOR in Python. ** is used for exponentiation.
     expression = expression.replace('^', '**')
     
@@ -212,121 +211,110 @@ def calc(expression):
     expression = expression.replace('ln', 'log')
     
     # Let Python evaluate the filtered mathematical expression and round to ten digits after the decimal.
-    return round(eval(expression), 10)
+    return Decimal(round(eval(expression), 10))
 
 # Define missing trig functions.
 def sec(num):
-    return 1 / cos(num)
+    return Decimal(1 / cos(num))
 
 def csc(num):
-    return 1 / sin(num)
+    return Decimal(DECIMAL_ONE / sin(num))
 
 def cot(num):
-    return 1 / tan(num)
+    return Decimal(DECIMAL_ONE / tan(num))
 
 def asec(num):
-    return acos(1 / num)
+    return Decimal(acos(DECIMAL_ONE / num))
 
 def acsc(num):
-    return asin(1 / num)
+    return Decimal(asin(DECIMAL_ONE / num))
 
 def acot(num):
-    return acot(1 / num)
+    return Decimal(acot(DECIMAL_ONE / num))
 
 # Define trig functions that assume inputs are in degrees.
 def sind(num):
-    return sin(radians(num))
+    return Decimal(sin(radians(num)))
 
 def cosd(num):
-    return cos(radians(num))
+    return Decimal(cos(radians(num)))
 
 def tand(num):
-    return tan(radians(num))
+    return Decimal(tan(radians(num)))
 
 def secd(num):
-    return 1 / cos(radians(num))
+    return Decimal(DECIMAL_ONE / cos(radians(num)))
 
 def cscd(num):
-    return 1 / sin(radians(num))
+    return Decimal(DECIMAL_ONE / sin(radians(num)))
 
 def cotd(num):
-    return 1 / tan(radians(num))
+    return Decimal(DECIMAL_ONE / tan(radians(num)))
 
 # Define arc (inverse) trig functions that convert outputs to degrees.
 def asind(num):
-    return degrees(asin(num))
+    return Decimal(degrees(asin(num)))
 
 def acosd(num):
-    return degrees(acos(num))
+    return Decimal(degrees(acos(num)))
 
 def atand(num):
-    return degrees(atan(num))
+    return Decimal(degrees(atan(num)))
 
 def asecd(num):
-    return degrees(acos(1 / num))
+    return Decimal(degrees(acos(DECIMAL_ONE / num)))
 
 def acscd(num):
-    return degrees(asin(1 / num))
+    return Decimal(degrees(asin(DECIMAL_ONE / num)))
 
 def acotd(num):
-    return degrees(atan(1 / num))
+    return Decimal(degrees(atan(DECIMAL_ONE / num)))
 
-# Square and cube, because I want them.
+# Square, cube, and cuberoot, because I want them.
 def sq(num):
-    return num ** 2
+    return Decimal(num ** 2)
 
 def cb(num):
-    return num ** 3
+    return Decimal(num ** 3)
 
 def cbrt(num):
-    return num ** (1.0 / 3.0)
-
-# Negation
-def negate(num):
-    return 0 - num
+    return Decimal(num ** Decimal(1.0 / 3.0))
 
 # Quadratic formula
 # Adds discriminant.
 def quadraticA(a, b, c):
-    return (negate(b) + sqrt(sq(b) - 4 * a * c)) / 2 * a
+    return Decimal(-b + sqrt(sq(b) - 4 * a * c) / 2 * a)
 
 # Subtracts discriminant.
 def quadraticS(a, b, c):
-    return (negate(b) - sqrt(sq(b) - 4 * a * c)) / 2 * a
+    return Decimal(-b - sqrt(sq(b) - 4 * a * c) / 2 * a)
 
 def logC(num, base):
-    return log(num) / log(base)
+    return Decimal(log(num) / log(base))
 
 def log10(num):
-    return logC(num, 10)
+    return Decimal(logC(num, 10))
 
-def changeBase(num, oldBase, newBase):
+# Should not be used in combination with other functions in the same statement (because it returns a string not necessarily parsable as a float).
+# num is treated as a decimal, and oldBase and newBase as ints.
+def changeBase(num, oldBase, newBase, precision=None):
     # TODO.
     # Convert num to an array of its digits, convert to base ten by multipying
     # each digit by oldBase^index, then convert to newBase using // and %.
     
-    # Convert to base 10.
-    base10Sum = 0
-    if oldBase == 10:
-        base10Sum = num
-    else:
-        # Thanks to https://stackoverflow.com/a/21270338/5231183.
-        numDigits = [int(d) for d in str(floor(num))]
-        for d in numDigits:
-            base10Sum += oldBase ** d
-    
-    # Convert to new base.
-    newNum = base10Sum
+    # From oldBase
+    if oldBase != 10:
+        whole, _, fractional = num.strip().partition('.')
+        num = int(whole + fractional, oldBase) * oldBase ** -len(fractional)
+
+    # To newBase
     if newBase != 10:
-        newDigits = []
-        newNumLen = exponent = floor(logC(num, newBase)) + 1
-        while base10Sum != 0:
-            newDigits[newNumLen - exponent - 1] = base10Sum // (newBase ** exponent)
-            base10Sum %= (newBase ** exponent)
-            exponent -= 1
-        
-        newNum = int(''.join(newDigits))
-    return newNum
+        precision = len(fractional) if precision is None else precision
+        s = _int_to_base(int(round(num / newBase ** -precision)), newBase)
+        if precision:
+            return s[:-precision] + '.' + s[-precision:]
+        else:
+            return s
 
 if __name__ == '__main__':
     main()
