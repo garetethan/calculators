@@ -1,7 +1,8 @@
 INSTUPsandbox
 C:\Users\Garet\Programming\calculators\PCalculator\sandbox.py
-INFOS:&&2|1|2|0|3|8|5&&2|4|2|0|3|11|5
-int_to_base=4
+INFOS:&&2|1|2|0|3|8|5&&2|4|2|0|3|15|5&&2|5|2|0|3|35|5
+intToBase=5
+changeBase=4
 sandbox=2
 main=1
 C:\Users\Garet\Programming\calculators\PCalculator\sandbox.py=3

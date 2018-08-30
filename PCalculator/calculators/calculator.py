@@ -134,8 +134,8 @@ def graphicalDriver():
         drawButton.draw(win)
         newLabel = Text(Point(topLeftX + (width / 2), topLeftY + (height / 2)), text)
         newLabel.setText(text)
-        newLabel.setFace('courier')
-        newLabel.setTextColor('white')
+        newLabel.setFace(TEXT_FONT)
+        newLabel.setTextColor(TEXT_COLOUR)
         newLabel.draw(win)
         return
 
@@ -297,24 +297,40 @@ def log10(num):
 
 # Should not be used in combination with other functions in the same statement (because it returns a string not necessarily parsable as a float).
 # num is treated as a decimal, and oldBase and newBase as ints.
-def changeBase(num, oldBase, newBase, precision=None):
-    # TODO.
-    # Convert num to an array of its digits, convert to base ten by multipying
-    # each digit by oldBase^index, then convert to newBase using // and %.
+def changeBase(num, oldBase, newBase, precision=10):
     
     # From oldBase
-    if oldBase != 10:
-        whole, _, fractional = num.strip().partition('.')
-        num = int(whole + fractional, oldBase) * oldBase ** -len(fractional)
+    whole, _, fractional = num.strip().partition('.')
+    num = int(whole + fractional, oldBase) * oldBase ** -len(fractional)
 
     # To newBase
+    if num % 1 == 0:
+        return Decimal(_intToBase(num, newBase))
+    
     if newBase != 10:
-        precision = len(fractional) if precision is None else precision
-        s = _int_to_base(int(round(num / newBase ** -precision)), newBase)
+        s = _intToBase(int(round(num / newBase ** -precision)), newBase)
         if precision:
-            return s[:-precision] + '.' + s[-precision:]
+            return Decimal(str(s)[:-precision] + '.' + str(s)[-precision:])
         else:
             return s
+    else:
+        return Decimal(num)
+
+# ALL uses of '+' below are concatenation and not addition.
+def _intToBase(number, newBase):
+    # Define list of symbols used as digits
+    symbols = string.digits + string.ascii_uppercase
+    
+    # Uses "the division method"
+    isNeg = number < 0
+    number = abs(number)
+    ans = ''
+    while number:
+        ans = symbols[number % newBase] + ans
+        number //= newBase
+    if isNeg:
+        ans = '-' + ans
+    return Decimal(ans)
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,53 @@
+'''
+Created on Mar 8, 2018
+
+@author: Garet
+'''
+
+from decimal import Decimal
+import string
+
+def main():
+    strInputs = input('Enter the number to convert, the old base, and the new base, separated by spaces.').split(' ')
+    decInputs = [Decimal(s) for s in strInputs]
+    num = changeBase(decInputs[0], decInputs[1], decInputs[2])
+    print(f'{num}')
+    
+def changeBase(num, oldBase, newBase, precision=10):
+    # TODO.
+    # Convert num to an array of its digits, convert to base ten by multipying
+    # each digit by oldBase^index, then convert to newBase using // and %.
+    
+    # From oldBase
+    if oldBase != 10:
+        whole, _, fractional = num.strip().partition('.')
+        num = int(whole + fractional, oldBase) * oldBase ** -len(fractional)
+
+    # To newBase
+    if newBase == 10:
+        return num
+    else:
+        s = intToBase(int(round(num / newBase ** -precision)), newBase)
+        if precision:
+            return s[:-precision] + '.' + s[-precision:]
+        else:
+            return s
+
+# ALL uses of '+' below are concatenation and not addition.
+def intToBase(number, new_base):
+    # Define list of symbols used as digits
+    symbols = string.digits + string.ascii_uppercase
+    
+    # Uses "the division method"
+    isNeg = number < 0
+    number = abs(number)
+    ans = ''
+    while number:
+        ans = symbols[number % new_base] + ans
+        number //= new_base
+    if isNeg:
+        ans = '-' + ans
+    return ans
+
+if __name__ == '__main__':
+    main()
