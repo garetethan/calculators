@@ -85,6 +85,7 @@ def graphicalDriver():
     resultDisplay.setTextColor(TEXT_COLOUR)
     resultDisplay.draw(win)
     
+		# Draw buttons.
     rows = len(BUTTON_LABELS) // BUTTON_HEIGHT + 1
     columns = min(WIN_WIDTH // BUTTON_WIDTH, len(BUTTON_LABELS))
     
@@ -152,30 +153,10 @@ def textDriver():
     while expression.lower() != 'quit':
         # If it is a variable assignment, save the value
         if '=' in expression:
-            # Should just contain the name of the variable and its value.
-            varName, varValue = expression.split('=')
-            variables[varName.strip()] = calc(varValue)
+            exec(expression)
         # Else it should be a mathematical expression to be evaluated.
         else:
-            # Look for word follows by anything other than '(' (including the end of the string).
-            variableTokens = split(r'([a-zA-z]+[^(]|[a-zA-z]+$)', expression)
-             
-            variableTokensLen = len(variableTokens)
-            if variableTokensLen % 2 == 0:
-                print('Error: Even number of variable tokens in textDriver().')
-                 
-            filteredExpression = ''
-            for i in range(int(variableTokensLen / 2)):
-                # The inserted string literal below should remain consistent with the name of the dictionary of user-defined variables.
-                filteredExpression += variableTokens[i * 2] + str(variables[variableTokens[(i * 2) + 1].strip()]) + ' '
-             
-            # In case the for loop above didn't run
-            if filteredExpression == '':
-                filteredExpression = expression
-                 
-            print(f'Sending {filteredExpression} to calc.')
-            variables['ans'] = calc(expression)
-            print(variables['ans'])
+          print(calc(expression))
         
         # Get input for next run.
         expression = input('==> ')
@@ -294,6 +275,22 @@ def logC(num, base):
 
 def log10(num):
     return Decimal(logC(num, 10))
+
+# Meant to be called on a list that the user has defined.
+def mean(nums):
+	return sum(nums) / len(nums)
+
+# From statistics. Meant to be called on a list.
+def variance(nums):
+	squareSum = 0
+	for num in nums:
+		squareSum += num ** 2
+	return (squareSum - len(nums) * (mean(nums) ** 2)) / (len(nums) - 1)
+
+# Standard deviation from statistics. Meant to be called on a list.
+def sd(nums):
+	return sqrt(variance(nums))
+
 
 # Should not be used in combination with other functions in the same statement (because it returns a string not necessarily parsable as a float).
 # num is treated as a decimal, and oldBase and newBase as ints.
