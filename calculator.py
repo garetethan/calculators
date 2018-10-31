@@ -2,19 +2,18 @@
 Created on Dec 24, 2017
 
 @author: Garet
+
+
+STILL UNDER CONSTRUCTION.
+I want to make a Python calculator around the eval() function.
+All numbers should be handled as Decimals. This prevents nasty floating point imprecision.
+
+TODO:
+* Variables seemd to be workng, but I want '7x' to evaluate to 7 times the value of x rather than a variable named _7x (if creating the var) or 7 concatenated to x (if referencing the var). This will mean that variable names will to be allowed to have numbers ANYWHERE in them (otherwise it is impossible to tell if 'foo3bar' is one, two, or three values). (The only alternative would be to check when saving each var if its name is contained in another var, and rejecting it if so, but this sounds labour intensive, and I think the outcome is worse.)
+* Make a factorize or unmultiply function.
+* Once you get most of the other things working, I would like to be able to map keys on my keyboard to different things so that I do not have to use all of keys around the edge to type in a mathematical expression. (I don't know if there would be a good way to do this, though.)
+* math domain error is handled in sqrt(), but also needs to be handled in log().
 '''
-
-
-# STILL UNDER CONSTRUCTION.
-# I want to make a Python calculator around the eval() function.
-# All numbers should be handled as Decimals. This prevents nasty floating point imprecision.
-# TODO:
-# Make a factorize or unmultiply function.
-# Once you get most of the other things working, I would like to be able to map
-# keys on my keyboard to different things so that I do not have to use all of
-# keys around the edge to type in a mathematical expression. (I don't know if
-# there would be a good way to do this, though.)
-# math domain error is handled in sqrt(), but also needs to be handled in log().
 
 from math import *
 # Necessary for DISALLOWED_VAR_NAMES below.
