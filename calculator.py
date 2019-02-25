@@ -4,46 +4,63 @@ Created on Dec 24, 2017
 @author: Garet
 
 
-STILL UNDER CONSTRUCTION.
 I want to make a Python calculator around the eval() function.
 All numbers should be handled as Decimals. This prevents nasty floating point imprecision.
 
 TODO:
-* Variables seemd to be workng, but I want '7x' to evaluate to 7 times the value of x rather than a variable named _7x (if creating the var) or 7 concatenated to x (if referencing the var). This will mean that variable names will to be allowed to have numbers ANYWHERE in them (otherwise it is impossible to tell if 'foo3bar' is one, two, or three values). (The only alternative would be to check when saving each var if its name is contained in another var, and rejecting it if so, but this sounds labour intensive, and I think the outcome is worse.)
+* Variables seem to be working, but I want '7x' to evaluate to 7 times the value of x rather than a variable named _7x (if creating the var) or 7 concatenated to x (if referencing the var). This will mean that variable names will NOT be allowed to have numbers ANYWHERE in them (otherwise it is impossible to tell if 'foo3bar' is one, two, or three values). (The only alternative would be to check when saving each var if its name is contained in another var, and rejecting it if so, but this sounds labour intensive, and I think the outcome is worse.)
 * Make a factorize or unmultiply function.
 * Once you get most of the other things working, I would like to be able to map keys on my keyboard to different things so that I do not have to use all of keys around the edge to type in a mathematical expression. (I don't know if there would be a good way to do this, though.)
 * math domain error is handled in sqrt(), but also needs to be handled in log().
+So I don't think I understand this completely, but I think that, because of the way I am using Decimals, they are imprecise, and therefore offer no clear advantage over just using floats. This is because I am allowing eval() to convert a string like '-2' or '3 + 5' into the number -2 and 8, respectively, before Decimal() ever gets a hold of them. I need to find a way to turn all numbers into decimals before anything else happens to them.
+* Add permutation and combination functions.
 '''
 
+from decimal import *
 from math import *
 # Necessary for DISALLOWED_VAR_NAMES below.
 import math
-from decimal import *
 from re import *
-from random import random
+from sys import argv
 from string import digits, ascii_uppercase
+# Used to print list of available operations.
+from tabulate import tabulate
 
 FLOATING_POINT_PRECISION = 12
-DECIMAL_ONE = Decimal(1)
 VAR_NAME_REGEX = r'[a-z_]\w*'
-DISALLOWED_VAR_NAMES = [item for item in dir(math) if item[0] != r'_']
+DISALLOWED_VAR_NAMES = [item for item in dir(math) if item[0] != '_']
 
 def textDriver():
-	'''Gets an expression from the user at the command line. If it is a variable assignment, it calc()s the right hand side and saves it. Otherwise, it assumes it to be a mathematical expression and prints the Decimal returned by calling calc() on it.'''
+	'''Gets an expression from the user at the command line. If it is a variable assignment, it calc()s the right hand side and saves it. Otherwise, it assumes it to be a mathematical expression and prints the Decimal returned by calc()ing it.'''
+	# First check if any flags were given.
+	print(argv)
+	if len(argv) > 1:
+		if argv[1] == 'help':
+			printHelp()
+			return 1
+		
+		if argv[1] == 'ops':
+			printOps()
+			return 2
 	
 	# Set the precision of all Decimals that we create.
 	getcontext().prec = FLOATING_POINT_PRECISION
+	# The only sane way to round numbers.
 	getcontext().rounding = ROUND_HALF_UP
 	
 	# Create a space for the user to store numbers temporarily (not between runs).
 	# The name of this variable should remain consistent with the string literal inserted into expression below.
 	variables = {'ans': 0}
 	
-	print('Enter mathematical expression to evaluate below.\n')
+	print('Enter a mathematical expression to evaluate below, or \'quit\'.\n')
 	
 	# Identical line at the end of the following while loop.
 	expression = input('==> ')
 	while expression != 'quit':
+		if expression == 'help':
+			printHelp()
+			continue
+		
 		# If it is a variable assignment, save the value
 		if '=' in expression:
 			varName, varValue = expression.split('=')
@@ -78,6 +95,8 @@ def textDriver():
 		# Get input for next run.
 		expression = input('==> ')
 	
+	return 0
+	
 def insertVars(expression, variables):
 	varFindingRegex = f'{VAR_NAME_REGEX}(?![a-zA-Z_\(])'
 	varNames = findall(varFindingRegex, expression)
@@ -87,9 +106,9 @@ def insertVars(expression, variables):
 		try:
 			newExp = newExp + str(variables[varNames[i]]) + expParts[i + 1]
 		except KeyError as err:
-			# If variable is actually a constant from math module, just leave it as text.
+			# If variable is actually a constant from math module, leave it as text and wrap in Decimal() constructor.
 			if varNames[i] in DISALLOWED_VAR_NAMES:
-				newExp = newExp + varNames[i] + expParts[i + 1]
+				newExp = f'{newExp}Decimal({varNames[i]}){expParts[i + 1]}'
 			else:
 				print(f'Error: There is no defined variable named {err}.')
 				return None
@@ -97,36 +116,39 @@ def insertVars(expression, variables):
 
 def calc(expression):
 	'''Takes a string expression and returns the result as a Decimal. Does not catch any exceptions.'''
-		
+	
+	# Wrap all numbers with Decimal() before we perform any other operations with them, so that everything stays exact.
+	# For some inexplicable magic reason, "-Decimal('7')" eval()s to Decimal('-7'). This makes things so much less complicated.
+	expression = sub(r'([\d\.]+)', r'Decimal(\1)', expression)
 	# Replace absolute-value bars with the abs() function that eval() will recognize.
 	# Assumes that absolute-value bars are never nested (which is impossible to tell for sure).
-	expression = sub(r'\|*.?\|', 'abs(\1)', expression)
-	# Replace '^' (Python XOR) with '**' (exponentiation); ')(' with ')*(' (implicit multiplication); and 'ln' with 'log' (which is base e by default).
-	replacements = {'^': '**', ')(': ')*(', 'ln': 'log'}
+	expression = sub(r'\|(.*?)\|', r'abs(\1)', expression)
+	# Replace '^' (Python XOR) with '**' (exponentiation) and ')(' with ')*(' (implicit multiplication).
+	replacements = {'^': '**', ')(': ')*('}
 	for old in replacements:
 		expression = expression.replace(old, replacements[old])
 	
-	# Let Python evaluate the filtered mathematical expression and round to ten digits after the decimal.
-	return Decimal(round(eval(expression), FLOATING_POINT_PRECISION))
+	# Let Python evaluate the filtered mathematical expression.
+	return eval(expression)
 
 # Define missing trig functions.
 def sec(num):
-	return Decimal(1 / cos(num))
+	return 1 / Decimal(cos(num))
 
 def csc(num):
-	return Decimal(DECIMAL_ONE / sin(num))
+	return 1 / Decimal(sin(num))
 
 def cot(num):
-	return Decimal(DECIMAL_ONE / tan(num))
+	return 1 / Decimal(tan(num))
 
 def asec(num):
-	return Decimal(acos(DECIMAL_ONE / num))
+	return Decimal(acos(1 / num))
 
 def acsc(num):
-	return Decimal(asin(DECIMAL_ONE / num))
+	return Decimal(asin(1 / num))
 
 def acot(num):
-	return Decimal(acot(DECIMAL_ONE / num))
+	return Decimal(acot(1 / num))
 
 # Define trig functions that assume inputs are in degrees.
 def sind(num):
@@ -139,13 +161,13 @@ def tand(num):
 	return Decimal(tan(radians(num)))
 
 def secd(num):
-	return Decimal(DECIMAL_ONE / cos(radians(num)))
+	return 1 / Decimal(cos(radians(num)))
 
 def cscd(num):
-	return Decimal(DECIMAL_ONE / sin(radians(num)))
+	return 1 / Decimal(sin(radians(num)))
 
 def cotd(num):
-	return Decimal(DECIMAL_ONE / tan(radians(num)))
+	return 1 / Decimal(tan(radians(num)))
 
 # Define arc (inverse) trig functions that convert outputs to degrees.
 def asind(num):
@@ -158,26 +180,26 @@ def atand(num):
 	return Decimal(degrees(atan(num)))
 
 def asecd(num):
-	return Decimal(degrees(acos(DECIMAL_ONE / num)))
+	return Decimal(degrees(acos(1 / num)))
 
 def acscd(num):
-	return Decimal(degrees(asin(DECIMAL_ONE / num)))
+	return Decimal(degrees(asin(1 / num)))
 
 def acotd(num):
-	return Decimal(degrees(atan(DECIMAL_ONE / num)))
+	return Decimal(degrees(atan(1 / num)))
 
 # Square, cube, and cuberoot, because I want them.
 def sq(num):
-	return Decimal(num ** 2)
+	return num ** 2
 
 def sqrt(num):
 	'''Returns the positive square root of any positive, real number.
-	Defined here just so that we can print a statement about complex numbers.'''
+	Defined here (overwriting math module) just so that we can use Decimal's sqrt() and print a statement in the case of negative input.'''
 	try:
-		return math.sqrt(num)
-	except ValueError as err:
+		return num.sqrt()
+	except InvalidOperation as err:
 		print('Square root of a negative encountered. This calculator does not support imaginary numbers, so the square root of the absolute value of the given value has been returned.')
-		return math.sqrt(abs(num))
+		return num.copy_abs().sqrt()
 
 def cb(num):
 	return Decimal(num ** 3)
@@ -194,13 +216,27 @@ def quadraticA(a, b, c):
 def quadraticS(a, b, c):
 	return Decimal(-b - sqrt(sq(b) - 4 * a * c) / 2 * a)
 
+# Overwrites math's ln() so that we can use Decimal's instead.
+def ln(num):
+	return num.ln()
+
 def logC(num, base):
-	return Decimal(log(num) / log(base))
+	# Change-of-base formula.
+	return Decimal(ln(num) / ln(base))
 
 def log10(num):
-	return Decimal(logC(num, 10))
+	return num.log10()
 
+def lg(num):
+	return logC(num, 2)
+
+# Uses Decimal's e^x method.
+def exp(num):
+	return num.exp()
+
+# gcd defined in math.
 def lcm(a, b):
+	'''Lowest common multiple.'''
 	return a * b / gcd(a, b)
 
 def changeBase(num, oldBase, newBase, precision=10):
@@ -241,7 +277,17 @@ def _intToBase(number, newBase):
 		ans = '-' + ans
 	return Decimal(ans)
 
+def printHelp():
+	with open('calculatorHelp.txt', 'r') as helpFile:
+		for line in helpFile:
+			if line[0] != '#':
+				print(line, end='')
 
-
+def printOps():
+	opList = []
+	with open('calculatorOps.csv', 'r') as opsFile:
+		for line in opsFile:
+			opList.append(line.split(';'))
+	print(tabulate(opList, headers=['Operation', 'Number of Operands', 'Description'], tablefmt='fancy_grid'))
 if __name__ == '__main__':
 	textDriver()
