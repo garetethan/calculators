@@ -1,7 +1,7 @@
 # collatz.py
 # Written by Garet Robertson.
-# Last updated 2017 August 31.
-# This little program is designed to test Collatz Conjecture (https://en.wikipedia.org/wiki/Collatz_conjecture) for any given integer.
+# Last significant update 2017 August 31.
+# This little program is designed to test the Collatz Conjecture (https://en.wikipedia.org/wiki/Collatz_conjecture) for any given integer.
 
 from sys import argv
 
