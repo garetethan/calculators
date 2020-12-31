@@ -1,8 +1,21 @@
-# Copy-pasted from pyCalc.
+'''Change Base'''
 
-def changeBase(num, oldBase, newBase):
-	'''Should not be used in combination with other functions in the same statement (because it returns a string not necessarily parsable as a float).
-	num is assumed to be a string representation of an integer, and oldBase and newBase integers.'''
+from sys import argv, stderr
+import string
+
+def main ():
+	if len(argv) != 4:
+		print(f'usage: python3 {argv[0]} num oldBase newBase', file=stderr)
+		exit(1)
+	print(changeBase(argv[1], int(argv[2]), int(argv[3])))
+
+def changeBase (num, oldBase, newBase):
+	'''
+	num: Representation of the number to convert (str).
+	oldBase: Current base of num (int). This base should itself be in base 10.
+	newBase: Base to convert num to (int).
+	Copied from an old version of sollux.py.
+	'''
 	
 	if oldBase < 2 or oldBase > 36 or newBase < 2 or newBase > 36:
 		print('Error: Invalid base. Both bases must be positive integers no greater than 36.')
@@ -15,13 +28,13 @@ def changeBase(num, oldBase, newBase):
 	if newBase == 10:
 		return num
 	else:
-		# Define list of symbols used as digits
+		# Define list of symbols used as digits.
 		# Lists of chars come from the string module.
-		symbols = digits + ascii_uppercase
+		symbols = string.digits + string.ascii_uppercase
 	
-		# Uses "the division method"
-		isNeg = oldNum < 0
-		oldNum = abs(oldNum)
+		# Uses "the division method".
+		isNeg = num < 0
+		oldNum = abs(num)
 		newNum = ''
 		while oldNum:
 			newNum = f'{symbols[oldNum % newBase]}{newNum}'
@@ -29,3 +42,6 @@ def changeBase(num, oldBase, newBase):
 		if isNeg:
 			newNum = f'-{newNum}'
 		return newNum
+
+if __name__ == '__main__':
+	main()
